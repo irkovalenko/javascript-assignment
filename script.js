@@ -16,32 +16,28 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) return "It's a tie!";
-    if (beats[playerSelection] === computerSelection) return `${playerSelection} beats ${computerSelection}, player wins! Congrats!`;
-    return `${computerSelection} beats ${playerSelection}, computer wins! Sorry not sorry!`;
+    if (beats[playerSelection] === computerSelection) return `${playerSelection} beats ${computerSelection}, player wins! Congrats! 🏆`;
+    return `${computerSelection} beats ${playerSelection}, computer wins! Sorry not sorry! 🏆`;
 }
 
 function game() {
     let playerScore = 0;
     let computerScore = 0;
     let round = 1;
+    let lastResultMessage = "";
 
     while (playerScore < 3 && computerScore < 3) {
-        console.log(`--- Round ${round} ---`);
-
-        let playerSelection = prompt("What is your choice: rock, paper, or scissors?").toLowerCase().trim();
+        let playerSelection = prompt(`${lastResultMessage}--- Round ${round} ---\nScore — Player: ${playerScore}, Computer: ${computerScore}\n\nWhat is your choice: rock, paper, or scissors?`).toLowerCase().trim();
         const validChoices = ["rock", "paper", "scissors"];
 
         if (!validChoices.includes(playerSelection)) {
-            console.log("Invalid choice. Please enter rock, paper, or scissors.");
+            alert("Invalid choice. Please enter rock, paper, or scissors.");
             continue;
         }
 
         let computerSelection = computerPlay();
-        console.log("Player selected: " + playerSelection);
-        console.log("Computer selected: " + computerSelection);
 
         const result = playRound(playerSelection, computerSelection);
-        console.log(result);
 
         if (result.startsWith(playerSelection)) {
             playerScore++;
@@ -49,15 +45,23 @@ function game() {
             computerScore++;
         }
 
-        console.log(`Score — Player: ${playerScore}, Computer: ${computerScore}`);
+        lastResultMessage = `You chose: ${playerSelection}\nComputer chose: ${computerSelection}\n${result}\n\n`;
         round++;
     }
 
-    if (playerScore > computerScore) {
-        console.log("🎉 You win the game!");
+     if (playerScore > computerScore) {
+        alert(`🎉 You win the game! Final score — Player: ${playerScore}, Computer: ${computerScore}`);
     } else {
-        console.log("💻 Computer wins the game!");
+        alert(`💻 Computer wins the game! Final score — Player: ${playerScore}, Computer: ${computerScore}`);
     }
 }
 
-game();
+alert("Rock ✊, Paper 📄, Scissors ✂️ \n\n🏆 First to win 3 rounds wins the game.\nType \"rock\", \"paper\", or \"scissors\" when prompted.");
+
+const startGame = confirm("👉 Click OK to start the game. \n\nGood luck!");
+
+if (startGame) {
+    game();
+} else {
+    alert("👋 Game cancelled.");
+}
