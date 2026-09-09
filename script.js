@@ -4,6 +4,14 @@ const beats = {
     scissors: "paper"
 };
 
+let tabWasChanged = false;
+
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        tabWasChanged = true;
+    }
+});
+
 function randomChoice(array) {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
@@ -27,7 +35,17 @@ function game() {
     let lastResultMessage = "";
 
     while (playerScore < 3 && computerScore < 3) {
-        let playerSelection = prompt(`${lastResultMessage}--- Round ${round} ---\nScore — Player: ${playerScore}, Computer: ${computerScore}\n\nWhat is your choice: rock, paper, or scissors?`).toLowerCase().trim();
+        let rawInput = prompt(`${lastResultMessage}--- Round ${round} ---\nScore — Player: ${playerScore}, Computer: ${computerScore}\n\nWhat is your choice: rock, paper, or scissors?`);
+
+        if (rawInput === null) {
+            if (tabWasChanged) {
+                tabWasChanged = false;
+                alert("👋 Welcome back! Let's continue.");
+            }
+            continue;
+        }
+
+        let playerSelection = rawInput.toLowerCase().trim();
         const validChoices = ["rock", "paper", "scissors"];
 
         if (!validChoices.includes(playerSelection)) {
@@ -36,7 +54,6 @@ function game() {
         }
 
         let computerSelection = computerPlay();
-
         const result = playRound(playerSelection, computerSelection);
 
         if (result.startsWith(playerSelection)) {
@@ -49,10 +66,24 @@ function game() {
         round++;
     }
 
-     if (playerScore > computerScore) {
+    if (playerScore > computerScore) {
         alert(`🎉 You win the game! Final score — Player: ${playerScore}, Computer: ${computerScore}`);
     } else {
         alert(`💻 Computer wins the game! Final score — Player: ${playerScore}, Computer: ${computerScore}`);
+    }
+
+    let playAgain = confirm("🔁 Play again?");
+
+    if (!playAgain && tabWasChanged) {
+        tabWasChanged = false;
+        alert("👋 Welcome back! Let's ask that again...");
+        playAgain = confirm("🔁 Play again?");
+    }
+
+    if (playAgain) {
+        game();
+    } else {
+        alert("👋 Thanks for playing! Bye!");
     }
 }
 
@@ -60,7 +91,12 @@ alert("Rock ✊, Paper 📄, Scissors ✂️ \n\n🏆 First to win 3 rounds wins
 
 const startGame = confirm("👉 Click OK to start the game. \n\nGood luck!");
 
-if (startGame) {
+if (!startGame && tabWasChanged) {
+    tabWasChanged = false;
+    alert("👋 Welcome back! Let's ask that again...");
+    const retryStart = confirm("👉 Click OK to start the game. \n\nGood luck!");
+    if (retryStart) game();
+} else if (startGame) {
     game();
 } else {
     alert("👋 Game cancelled.");
