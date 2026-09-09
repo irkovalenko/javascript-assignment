@@ -16,12 +16,11 @@ function getInventoryStatus() {
     return gameState.inventory.join(", ");
 }
 
-// Location 1: Grand Hall
 function grandHall() {
     let choice = prompt(
         "=== GRAND HALL ===\n" +
         "You are standing in a dark hall. Shadows flicker on the walls.\n\n" +
-        "Items in Bag: [" + getInventoryStatus() + "]\n\n" +
+        "Items in Bag: " + getInventoryStatus() + "\n\n" +
         "What will you do?\n" +
         "1. Inspect the old Grandfather Clock\n" +
         "2. Go to the Library\n" +
@@ -36,7 +35,7 @@ function grandHall() {
         if (!gameState.hasCode) {
             gameState.hasCode = true;
             gameState.inventory.push("Secret Note [PIN: 1031]");
-            alert(">> CLUE FOUND! Inside the clock, you found a paper note with PIN: 1031.");
+            alert("🎉 CLUE FOUND! Inside the clock, you found a paper note with PIN: 1031.");
         } else {
             alert("The clock is ticking continuously. Nothing else inside.");
         }
@@ -56,7 +55,7 @@ function library() {
     let choice = prompt(
         "=== LIBRARY ===\n" +
         "Dusty bookshelves line the walls. Cold wind blows through the broken window.\n\n" +
-        "Items in Bag: [" + getInventoryStatus() + "]\n\n" +
+        "Items in Bag: " + getInventoryStatus() + "\n\n" +
         "What will you do?\n" +
         "1. Search the glowing bookshelf\n" +
         "2. Return to the Grand Hall\n" +
@@ -88,7 +87,7 @@ function frontExit() {
     let choice = prompt(
         "=== FRONT EXIT DOOR ===\n" +
         "A huge iron door stands before you. It has a keyhole and a digital keypad.\n\n" +
-        "Items in Bag: [" + getInventoryStatus() + "]\n\n" +
+        "Items in Bag: " + getInventoryStatus() + "\n\n" +
         "What will you do?\n" +
         "1. Use Silver Key and enter PIN Code\n" +
         "2. Return to Grand Hall\n" +
@@ -121,7 +120,6 @@ function frontExit() {
     }
 }
 
-// Main Game Controller
 function startHauntedEscape() {
     gameState.hasKey = false;
     gameState.hasCode = false;
@@ -157,5 +155,4 @@ function startHauntedEscape() {
     }
 }
 
-// Start Game
 startHauntedEscape();
