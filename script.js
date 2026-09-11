@@ -4,6 +4,8 @@ const beats = {
     scissors: "paper"
 };
 
+const choices = ["rock", "paper", "scissors"];
+
 let tabWasChanged = false;
 
 document.addEventListener("visibilitychange", () => {
@@ -18,7 +20,6 @@ function randomChoice(array) {
 }
 
 function computerPlay() {
-    const choices = ["rock", "paper", "scissors"];
     return randomChoice(choices);
 }
 
@@ -46,9 +47,8 @@ function game() {
         }
 
         let playerSelection = rawInput.toLowerCase().trim();
-        const validChoices = ["rock", "paper", "scissors"];
 
-        if (!validChoices.includes(playerSelection)) {
+        if (!choices.includes(playerSelection)) {
             alert("Invalid choice. Please enter rock, paper, or scissors.");
             continue;
         }
