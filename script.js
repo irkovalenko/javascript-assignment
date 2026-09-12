@@ -1,11 +1,3 @@
-function askToPlayAgain() {
-  return confirm("🔁 Play again?");
-}
-
-function cancelGame() {
-  alert("👋 Game cancelled. Bye!");
-}
-
 const beats = {
   rock: "scissors",
   paper: "rock",
@@ -54,7 +46,7 @@ function getPlayerChoice(lastResultMessage, round, playerScore, computerScore) {
     );
 
     if (rawInput === null) {
-      return null;
+      cancelGame();
     }
 
     const playerSelection = rawInput.toLowerCase().trim();
@@ -79,6 +71,14 @@ function announceWinner(playerScore, computerScore) {
         `Final score — Player: ${playerScore}, Computer: ${computerScore}`,
     );
   }
+}
+
+function askToPlayAgain() {
+  return confirm("🔁 Play again?");
+}
+
+function cancelGame() {
+  alert("👋 Game cancelled. Bye!");
 }
 
 function game() {
