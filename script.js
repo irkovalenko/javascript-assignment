@@ -63,7 +63,7 @@ function announceWinner(playerScore, computerScore) {
   if (playerScore > computerScore) {
     alert(
       `🎉 You win the game!\n\n` +
-        `Final score — Player: ${playerScore}, Computer: ${computerScore}`,
+        `Final score — Player: ${playerScore}, Computer: ${computerScore}`
     );
   } else {
     alert(
@@ -79,6 +79,7 @@ function askToPlayAgain() {
 
 function cancelGame() {
   alert("👋 Game cancelled. Bye!");
+  return;
 }
 
 function game() {
