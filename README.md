@@ -1,8 +1,9 @@
- **Paper, rock, scissors** and **Haunted mansion**. A user interacts with prompt window.
+ **Paper, rock, scissors** 
+ 
+ A user interacts with prompt window.
 
 Preview: https://irkovalenko.github.io/javascript-assignment/
 
-## Paper, rock, scissors
 A user plays against computer (random choice = random index from "paper, rock, scissors array"). 
 Whoever wins 3 rounds in the row, wins the whole game. The whole thing takes place in alert windows for better user experience.
 
