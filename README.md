@@ -1,4 +1,4 @@
-This is a repo consisting of 2 mini-games : **Paper, rock, scissors** and **Haunted mansion**. In both games a user interacts with prompt window.
+ **Paper, rock, scissors** and **Haunted mansion**. A user interacts with prompt window.
 
 Preview: https://irkovalenko.github.io/javascript-assignment/
 
@@ -19,13 +19,6 @@ Whoever wins 3 rounds in the row, wins the whole game. The whole thing takes pla
 
 #### The example of the won game ;) 
 <img width="1252" height="874" alt="image" src="https://github.com/user-attachments/assets/d15ed9a8-3a95-4b31-b640-ac65d7672b35" />
-
-## Haunted mansion
-
-A user must follow the options given so he gains all the attributes required to escape the mansion.
-
-<img width="1252" height="874" alt="first-glance" src="https://github.com/user-attachments/assets/039bea3e-59dc-46e6-bdb4-5cbca9acd3c1" />
-
 
 
 
