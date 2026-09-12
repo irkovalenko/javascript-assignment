@@ -1,6 +1,8 @@
 This is a repo consisting of 2 mini-games : **Paper, rock, scissors** and **Haunted mansion**. In both games a user interacts with prompt window.
 
-## Paper, rock, scissors 
+Preview: https://irkovalenko.github.io/javascript-assignment/
+
+## Paper, rock, scissors
 A user plays against computer (random choice = random index from "paper, rock, scissors array"). 
 Whoever wins 3 rounds in the row, wins the whole game. The whole thing takes place in alert windows for better user experience.
 
